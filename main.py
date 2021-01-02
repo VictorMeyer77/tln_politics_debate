@@ -2,7 +2,7 @@ from command import *
 import json
 import sys
 
-if "__name__" == "__main__":
+if __name__ == "__main__":
 
     try:
 
@@ -18,6 +18,7 @@ if "__name__" == "__main__":
         sys.exit()
 
     if sys.argv[1] == "download":
+        print("INFO: Début du téléchargement des tweets...")
         doawnloadDataset("output/data", tweeterToken)
 
     if sys.argv[1] == "train":

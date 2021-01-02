@@ -6,7 +6,7 @@ class TweeterApi:
     def __init__(self, username, dataDir, tweeterToken):
 
         self.consumerKey = tweeterToken["consumer_key"]
-        self.consumerSecret = tweeterToken["consumerSecret"]
+        self.consumerSecret = tweeterToken["consumer_secret"]
         self.accessToken = tweeterToken["access_token"]
         self.accessTokenSecret = tweeterToken["access_token_secret"]
         self.username = username
