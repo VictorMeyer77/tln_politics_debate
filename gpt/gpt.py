@@ -28,10 +28,15 @@ class Gpt:
         gpt2.load_gpt2(self.sess,
                        run_name=self.modelName)
 
-    def generate(self):
+    def generateSentencesFile(self, outputDir):
         output = gpt2.generate(self.sess,
                                run_name=self.modelName,
                                return_as_list=True,
                                length=100)
-        print("-----------")
-        print(output[0])
+
+        file = open(os.path.join(outputDir, self.modelName + ".txt"), "w+")
+
+        for sentence in output:
+            file.write(sentence)
+
+        file.close()
