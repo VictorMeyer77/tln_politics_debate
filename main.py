@@ -27,7 +27,13 @@ if __name__ == "__main__":
             print("ERROR: train prend 4 arguments.\n Lire le README.md.")
             sys.exit()
 
-        trainGpt(sys.argv[3], sys.argv[2], "output/data", "output/token", sys.argv[4], sys.argv[5])
+        trainGpt(sys.argv[3],
+                 sys.argv[2],
+                 "output/data",
+                 "output/token",
+                 "output/checkpoint",
+                 int(sys.argv[4]),
+                 int(sys.argv[5]))
 
     if sys.argv[1] == "generate":
 
@@ -35,4 +41,4 @@ if __name__ == "__main__":
             print("ERROR: generate prend 1 argument.\n Lire le README.md.")
             sys.exit()
 
-        generateFile(sys.argv[2], "output/token", "output/generate")
+        generateFile(sys.argv[2], "output/token", "output/generate", "output/checkpoint")

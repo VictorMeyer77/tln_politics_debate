@@ -4,10 +4,11 @@ import os
 
 class Gpt:
 
-    def __init__(self, modelType, modelName, tokenDir):
+    def __init__(self, modelType, modelName, tokenDir, checkpointDir):
         self.modelType = modelType
         self.modelName = modelName
         self.tokenDir = tokenDir
+        self.checkpointDir = checkpointDir
         self.loadBaseModel()
         self.sess = gpt2.start_tf_sess()
 
@@ -22,15 +23,18 @@ class Gpt:
                       model_name=self.modelType,
                       batch_size=batchSize,
                       run_name=self.modelName,
+                      checkpoint_dir=self.checkpointDir,
                       steps=step)
 
     def loadModel(self):
         gpt2.load_gpt2(self.sess,
+                       checkpoint_dir=self.checkpointDir,
                        run_name=self.modelName)
 
     def generateSentencesFile(self, outputDir):
         output = gpt2.generate(self.sess,
                                run_name=self.modelName,
+                               checkpoint_dir=self.checkpointDir,
                                return_as_list=True,
                                length=100)
 
