@@ -1,39 +1,37 @@
-from dataGen.tweeterApi import TweeterApi
-from dataGen.userTL import UserTL
+#from dataGen.tweeterApi import TweeterApi
 #from textGenerator import TextGenerator
-#from model.gpt import Gpt
 from gpt.tokenizer import Tokenizer
 from gpt.gpt import Gpt
 
-
+TWEET_DIR = "C:/Users/Utilisateur/Work/ESGI/TLN/tln_politics_debate/data"
+"""
 def doawnload_dataset():
 
-    UserTL("@alexiscorbiere", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@AQuatennens", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@mbompard", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    #UserTL("@JLMelenchon", TweeterApi().getApi(), ").run()
-    UserTL("@ManonAubryFr", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@Anne_Hidalgo", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@yjadot", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@alicecoffin", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@Deputee_Obono", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@Clem_Autain", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@faureolivier", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@benoithamon", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@najatvb", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@PrudhommeLoic", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@n_arthaud", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@EvaJoly", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
-    UserTL("@MartineAubry", TweeterApi().getApi(), "/home/victor/esgi/M2/tln/tln_politics_debate/data").run()
+    TweeterApi("@alexiscorbiere", TWEET_DIR).run()
+    TweeterApi("@AQuatennens", TWEET_DIR).run()
+    TweeterApi("@mbompard", TWEET_DIR).run()
+    TweeterApi("@JLMelenchon", TWEET_DIR).run()
+    TweeterApi("@ManonAubryFr", TWEET_DIR).run()
+    TweeterApi("@Anne_Hidalgo", TWEET_DIR).run()
+    TweeterApi("@yjadot", TWEET_DIR).run()
+    TweeterApi("@alicecoffin", TWEET_DIR).run()
+    TweeterApi("@Deputee_Obono", TWEET_DIR).run()
+    TweeterApi("@Clem_Autain", TWEET_DIR).run()
+    TweeterApi("@faureolivier", TWEET_DIR).run()
+    TweeterApi("@benoithamon", TWEET_DIR).run()
+    TweeterApi("@najatvb", TWEET_DIR).run()
+    TweeterApi("@PrudhommeLoic", TWEET_DIR).run()
+    TweeterApi("@n_arthaud", TWEET_DIR).run()
+    TweeterApi("@EvaJoly", TWEET_DIR).run()
+    TweeterApi("@MartineAubry", TWEET_DIR).run()
 
+"""
 
+#doawnload_dataset()
 
-doawnload_dataset()
-#UserTL("@JLMelenchon", TweeterApi().getApi(), ").run()
-
-#Tokenizer("output/token", "test01")
-#gpt = Gpt("124M", "test01")
-#gpt.train(1, 5)
+#Tokenizer("data", "output/token", "test01")
+gpt = Gpt("124M", "test01", "output/token")
+gpt.train(10, 1000)
 #gpt.loadModel()
-#gpt.generate()
+gpt.generate()
 

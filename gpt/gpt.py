@@ -1,10 +1,10 @@
 import gpt_2_simple as gpt2
 import os
 
+
 class Gpt:
 
     def __init__(self, modelType, modelName, tokenDir):
-
         self.modelType = modelType
         self.modelName = modelName
         self.tokenDir = tokenDir
@@ -18,7 +18,7 @@ class Gpt:
 
     def train(self, batchSize, step):
         gpt2.finetune(self.sess,
-                      os.path.join(self.tokenDir,  + self.modelName + ".csv"),
+                      os.path.join(self.tokenDir, self.modelName + ".csv"),
                       model_name=self.modelType,
                       batch_size=batchSize,
                       run_name=self.modelName,
@@ -29,7 +29,6 @@ class Gpt:
                        run_name=self.modelName)
 
     def generate(self):
-
         output = gpt2.generate(self.sess,
                                run_name=self.modelName,
                                return_as_list=True,
