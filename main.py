@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     if sys.argv[1] == "train":
 
-        if len(sys.argv) < 6:
+        if len(sys.argv) < 5:
             print("ERROR: train prend 4 arguments.\n Lire le README.md.")
             sys.exit()
 
@@ -32,8 +32,7 @@ if __name__ == "__main__":
                  "output/data",
                  "output/token",
                  "output/checkpoint",
-                 int(sys.argv[4]),
-                 int(sys.argv[5]))
+                 int(sys.argv[4]))
 
     if sys.argv[1] == "generate":
 

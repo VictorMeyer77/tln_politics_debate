@@ -23,10 +23,10 @@ def doawnloadDataset(tweetsDir, tweeterToken):
     TweeterApi("@MartineAubry", tweetsDir, tweeterToken).run()
 
 
-def trainGpt(modelType, modelName, tweetsDir, tokenDir, checkpointDir, step, batchSize):
+def trainGpt(modelType, modelName, tweetsDir, tokenDir, checkpointDir, step):
     Tokenizer(tweetsDir, tokenDir, modelName)
     gpt = Gpt(modelType, modelName, tokenDir, checkpointDir)
-    gpt.train(batchSize, step)
+    gpt.train(step)
 
 
 def generateFile(modelName, tokenDir, generateDir, chekpointDir):

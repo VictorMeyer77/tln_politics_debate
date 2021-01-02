@@ -17,11 +17,10 @@ class Gpt:
             print("INFO: Téléchargement du modèle {} ...".format(self.modelType))
             gpt2.download_gpt2(model_name=self.modelType)
 
-    def train(self, batchSize, step):
+    def train(self, step):
         gpt2.finetune(self.sess,
                       os.path.join(self.tokenDir, self.modelName + ".csv"),
                       model_name=self.modelType,
-                      batch_size=batchSize,
                       run_name=self.modelName,
                       checkpoint_dir=self.checkpointDir,
                       steps=step)
