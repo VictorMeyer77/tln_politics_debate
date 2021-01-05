@@ -36,8 +36,8 @@ if __name__ == "__main__":
 
     if sys.argv[1] == "generate":
 
-        if len(sys.argv) < 3:
-            print("ERROR: generate prend 1 argument.\n Lire le README.md.")
+        if len(sys.argv) < 4:
+            print("ERROR: generate prend 2 argument.\n Lire le README.md.")
             sys.exit()
 
-        generateFile(sys.argv[2], "output/token", "output/generate", "output/checkpoint")
+        generateFile(sys.argv[2], sys.argv[3], "output/token", "output/generate", "output/checkpoint")

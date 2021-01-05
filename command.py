@@ -29,7 +29,7 @@ def trainGpt(modelType, modelName, tweetsDir, tokenDir, checkpointDir, step):
     gpt.train(step)
 
 
-def generateFile(modelName, tokenDir, generateDir, chekpointDir):
-    gpt = Gpt(None, modelName, tokenDir, chekpointDir)
+def generateFile(modelName, modelType, tokenDir, generateDir, chekpointDir):
+    gpt = Gpt(modelType, modelName, tokenDir, chekpointDir)
     gpt.loadModel()
     gpt.generateSentencesFile(generateDir)
