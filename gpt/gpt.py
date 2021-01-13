@@ -4,10 +4,11 @@ import os
 
 class Gpt:
 
-    def __init__(self, modelType, modelName, tokenDir, checkpointDir):
+    def __init__(self, modelType, side, tokenDir, checkpointDir, outputDir):
         self.modelType = modelType
-        self.modelName = modelName
-        self.tokenDir = tokenDir
+        self.side = side
+        self.outputDir = os.path.join(outputDir, side)
+        self.tokenDir = os.path.join(tokenDir, side)
         self.checkpointDir = checkpointDir
         self.loadBaseModel()
         self.sess = gpt2.start_tf_sess()
@@ -19,25 +20,25 @@ class Gpt:
 
     def train(self, step):
         gpt2.finetune(self.sess,
-                      os.path.join(self.tokenDir, self.modelName + ".csv"),
+                      os.path.join(self.tokenDir, self.side + ".csv"),
                       model_name=self.modelType,
-                      run_name=self.modelName,
+                      run_name=self.side,
                       checkpoint_dir=self.checkpointDir,
                       steps=step)
 
     def loadModel(self):
         gpt2.load_gpt2(self.sess,
                        checkpoint_dir=self.checkpointDir,
-                       run_name=self.modelName)
+                       run_name=self.side)
 
-    def generateSentencesFile(self, outputDir):
+    def generateSentencesFile(self):
 
-        file = open(os.path.join(outputDir, self.modelName + ".txt"), "a")
+        file = open(os.path.join(self.outputDir, self.side + ".txt"), "a")
 
         for i in range(500):
 
             output = gpt2.generate(self.sess,
-                                   run_name=self.modelName,
+                                   run_name=self.side,
                                    checkpoint_dir=self.checkpointDir,
                                    return_as_list=True,
                                    length=100000)
@@ -46,6 +47,5 @@ class Gpt:
 
             for sentence in output:
                 file.write(sentence)
-
 
         file.close()

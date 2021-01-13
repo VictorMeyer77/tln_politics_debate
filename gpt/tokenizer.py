@@ -9,10 +9,10 @@ END_CHAR = [".", "!", "?", "\n"]
 
 class Tokenizer:
 
-    def __init__(self, dataDir, tokenDir, modelName):
+    def __init__(self, dataDir, tokenDir, side):
 
-        self.dataDir = dataDir
-        self.tokenDir = tokenDir + "/" + modelName + ".csv"
+        self.dataDir = os.path.join(dataDir, side)
+        self.tokenDir = os.path.join(tokenDir, side, side + ".csv")
 
         self.run()
 

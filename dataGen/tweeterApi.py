@@ -10,7 +10,7 @@ class TweeterApi:
         self.accessToken = tweeterToken["access_token"]
         self.accessTokenSecret = tweeterToken["access_token_secret"]
         self.username = username
-        self.output = os.path.join(dataDir, side, self.username[1:], ".txt")
+        self.output = os.path.join(dataDir, side, self.username[1:] + ".txt")
         self.api = None
 
     def setApi(self):
