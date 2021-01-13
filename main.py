@@ -26,7 +26,7 @@ if __name__ == "__main__":
         assert sys.argv[2] in ["gauche", "droite"]
 
         print("INFO: Début du téléchargement des tweets...")
-        doawnloadDataset("output/data", tweeterToken, sys.argv)
+        doawnloadDataset("output/data", tweeterToken, sys.argv[2])
 
     if sys.argv[1] == "train":
 
