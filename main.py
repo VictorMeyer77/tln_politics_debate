@@ -18,8 +18,15 @@ if __name__ == "__main__":
         sys.exit()
 
     if sys.argv[1] == "download":
+
+        if len(sys.argv) < 3:
+            print("ERROR: doawnload prend un argument.\nLire le README.md")
+            sys.exit()
+
+        assert sys.argv[2] in ["gauche", "droite"]
+
         print("INFO: Début du téléchargement des tweets...")
-        doawnloadDataset("output/data", tweeterToken)
+        doawnloadDataset("output/data", tweeterToken, sys.argv)
 
     if sys.argv[1] == "train":
 

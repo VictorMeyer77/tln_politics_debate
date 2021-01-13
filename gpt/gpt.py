@@ -31,15 +31,21 @@ class Gpt:
                        run_name=self.modelName)
 
     def generateSentencesFile(self, outputDir):
-        output = gpt2.generate(self.sess,
-                               run_name=self.modelName,
-                               checkpoint_dir=self.checkpointDir,
-                               return_as_list=True,
-                               length=100)
 
-        file = open(os.path.join(outputDir, self.modelName + ".txt"), "w+")
+        file = open(os.path.join(outputDir, self.modelName + ".txt"), "a")
 
-        for sentence in output:
-            file.write(sentence)
+        for i in range(500):
+
+            output = gpt2.generate(self.sess,
+                                   run_name=self.modelName,
+                                   checkpoint_dir=self.checkpointDir,
+                                   return_as_list=True,
+                                   length=100000)
+
+            print("INFO: {}/10000".format(i * 20))
+
+            for sentence in output:
+                file.write(sentence)
+
 
         file.close()

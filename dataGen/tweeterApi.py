@@ -1,16 +1,16 @@
 import tweepy
-
+import os
 
 class TweeterApi:
 
-    def __init__(self, username, dataDir, tweeterToken):
+    def __init__(self, username, dataDir, tweeterToken, side):
 
         self.consumerKey = tweeterToken["consumer_key"]
         self.consumerSecret = tweeterToken["consumer_secret"]
         self.accessToken = tweeterToken["access_token"]
         self.accessTokenSecret = tweeterToken["access_token_secret"]
         self.username = username
-        self.output = dataDir + "/" + self.username[1:] + ".txt"
+        self.output = os.path.join(dataDir, side, self.username[1:], ".txt")
         self.api = None
 
     def setApi(self):
