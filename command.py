@@ -42,7 +42,7 @@ def doawnloadDataset(tweetsDir, tweeterToken, side):
         TweeterApi("@xavierbertrand", tweetsDir, tweeterToken, side).run()
         TweeterApi("@datirachida", tweetsDir, tweeterToken, side).run()
         TweeterApi("@francoisbaroin", tweetsDir, tweeterToken, side).run()
-        TweeterApi("@alainjupper", tweetsDir, tweeterToken, side).run()
+        TweeterApi("@alainjuppe", tweetsDir, tweeterToken, side).run()
         TweeterApi("@nadine_morano", tweetsDir, tweeterToken, side).run()
 
 

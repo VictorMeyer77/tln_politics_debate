@@ -1,6 +1,7 @@
 import gpt_2_simple as gpt2
 import os
 
+END_CHAR = [".", "!", "?"]
 
 class Gpt:
 
@@ -49,3 +50,23 @@ class Gpt:
                 file.write(sentence)
 
         file.close()
+
+    def cleanGenerateFile(self):
+
+        source = open(os.path.join(self.outputDir, self.side + ".txt"), "r")
+        cible = open(os.path.join(self.outputDir, self.side + ".txt_tmp"), "w+")
+
+        lines = source.readlines()
+
+        for line in lines:
+
+            cleanLine = line.replace("<|startoftext|>", "").replace("<|endoftext|>", "")
+            if len(cleanLine.split(" ")) > 6 and cleanLine[-1] in END_CHAR:
+                cible.write(cleanLine)
+
+        source.close()
+        cible.close()
+
+        os.remove(os.path.join(self.outputDir, self.side + ".txt"))
+        os.rename(os.path.join(self.outputDir, self.side + ".txt_tmp"),
+                  os.path.join(self.outputDir, self.side + ".txt"))
