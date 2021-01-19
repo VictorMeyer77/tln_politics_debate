@@ -1,9 +1,7 @@
-from dataGen.tweeterApi import TweeterApi
-from gpt.tokenizer import Tokenizer
-from gpt.gpt import Gpt
 
+def doawnload(tweetsDir, tweeterToken, side):
 
-def doawnloadDataset(tweetsDir, tweeterToken, side):
+    from dataGen.tweeterApi import TweeterApi
 
     if side == "gauche":
 
@@ -43,16 +41,27 @@ def doawnloadDataset(tweetsDir, tweeterToken, side):
         TweeterApi("@datirachida", tweetsDir, tweeterToken, side).run()
         TweeterApi("@francoisbaroin", tweetsDir, tweeterToken, side).run()
         TweeterApi("@alainjuppe", tweetsDir, tweeterToken, side).run()
-        TweeterApi("@nadine_morano", tweetsDir, tweeterToken, side).run()
 
 
-def trainGpt(modelType, side, tweetsDir, tokenDir, outputDir, checkpointDir, step):
+def train(modelType, side, tweetsDir, tokenDir, outputDir, checkpointDir, step):
+
+    from gpt.tokenizer import Tokenizer
+    from gpt.gpt import Gpt
+
     Tokenizer(tweetsDir, tokenDir, side)
     gpt = Gpt(modelType, side, tokenDir, checkpointDir, outputDir)
     gpt.train(step)
 
 
-def generateFile(side, modelType, tokenDir, outputDir,  chekpointDir):
+def generate(side, modelType, tokenDir, outputDir, chekpointDir):
+
+    from gpt.gpt import Gpt
+
     gpt = Gpt(modelType, side, tokenDir, chekpointDir, outputDir)
     gpt.loadModel()
     gpt.generateSentencesFile()
+
+def debate(outputPath, stopwordsPath, answerSize):
+
+    from api.api import launchApi
+    launchApi(outputPath, stopwordsPath, answerSize)

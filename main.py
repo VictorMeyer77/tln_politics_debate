@@ -2,6 +2,9 @@ from command import *
 import json
 import sys
 
+NB_SENTENCE = 5
+MODEL_TYPE = "124M"
+
 if __name__ == "__main__":
 
     try:
@@ -26,23 +29,23 @@ if __name__ == "__main__":
         assert sys.argv[2] in ["gauche", "droite"]
 
         print("INFO: Début du téléchargement des tweets...")
-        doawnloadDataset("output/data", tweeterToken, sys.argv[2])
+        doawnload("output/data", tweeterToken, sys.argv[2])
 
     if sys.argv[1] == "train":
 
-        if len(sys.argv) < 5:
-            print("ERROR: train prend 4 arguments.\n Lire le README.md.")
+        if len(sys.argv) < 3:
+            print("ERROR: train prend 2 arguments.\n Lire le README.md.")
             sys.exit()
 
         assert sys.argv[2] in ["gauche", "droite"]
 
-        trainGpt(sys.argv[3],
-                 sys.argv[2],
-                 "output/data",
-                 "output/token",
-                 "output/generate",
-                 "output/checkpoint",
-                 int(sys.argv[4]))
+        train(MODEL_TYPE,
+              sys.argv[2],
+              "output/data",
+              "output/token",
+              "output/generate",
+              "output/checkpoint",
+              int(sys.argv[3]))
 
     if sys.argv[1] == "generate":
 
@@ -52,4 +55,7 @@ if __name__ == "__main__":
 
         assert sys.argv[2] in ["gauche", "droite"]
 
-        generateFile(sys.argv[2], sys.argv[3], "output/token", "output/generate", "output/checkpoint")
+        generate(sys.argv[2], MODEL_TYPE, "output/token", "output/generate", "output/checkpoint")
+
+    if sys.argv[1] == "debate":
+        debate("output/generate", "conf/stopwords.txt", NB_SENTENCE)

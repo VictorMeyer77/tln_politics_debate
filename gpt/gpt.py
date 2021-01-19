@@ -36,37 +36,22 @@ class Gpt:
 
         file = open(os.path.join(self.outputDir, self.side + ".txt"), "a")
 
-        for i in range(500):
+        i = 0
+
+        while i < 2000:
 
             output = gpt2.generate(self.sess,
                                    run_name=self.side,
                                    checkpoint_dir=self.checkpointDir,
                                    return_as_list=True,
-                                   length=100000)
+                                   length=1000)
 
-            print("INFO: {}/10000".format(i * 20))
+            for sentence in output[0].split("\n"):
 
-            for sentence in output:
-                file.write(sentence)
+                cleanSentence = sentence.replace("<|startoftext|>", "").replace("<|endoftext|>", "").strip()
+
+                if len(cleanSentence.split(" ")) > 7 and cleanSentence[-1] in END_CHAR:
+                    file.write(cleanSentence + "\n")
+                    i += 1
 
         file.close()
-
-    def cleanGenerateFile(self):
-
-        source = open(os.path.join(self.outputDir, self.side + ".txt"), "r")
-        cible = open(os.path.join(self.outputDir, self.side + ".txt_tmp"), "w+")
-
-        lines = source.readlines()
-
-        for line in lines:
-
-            cleanLine = line.replace("<|startoftext|>", "").replace("<|endoftext|>", "")
-            if len(cleanLine.split(" ")) > 6 and cleanLine[-1] in END_CHAR:
-                cible.write(cleanLine)
-
-        source.close()
-        cible.close()
-
-        os.remove(os.path.join(self.outputDir, self.side + ".txt"))
-        os.rename(os.path.join(self.outputDir, self.side + ".txt_tmp"),
-                  os.path.join(self.outputDir, self.side + ".txt"))
