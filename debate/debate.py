@@ -13,7 +13,7 @@ class Debate:
         print("INFO: Chargement politique de gauche...")
         self.leftPolitician = Politician(os.path.join(outputPath, "gauche/gauche.txt"), sw, nlp, answerSize)
         print("INFO: Chargement politique de droite...")
-        self.rigthPolitician = Politician(os.path.join(outputPath, "gauche/gauche.txt"), sw, nlp, answerSize)
+        self.rigthPolitician = Politician(os.path.join(outputPath, "droite/droite.txt"), sw, nlp, answerSize)
 
     @staticmethod
     def readStopwords(path):

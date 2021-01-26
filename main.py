@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     if sys.argv[1] == "train":
 
-        if len(sys.argv) < 3:
+        if len(sys.argv) < 4:
             print("ERROR: train prend 2 arguments.\n Lire le README.md.")
             sys.exit()
 
@@ -49,8 +49,8 @@ if __name__ == "__main__":
 
     if sys.argv[1] == "generate":
 
-        if len(sys.argv) < 4:
-            print("ERROR: generate prend 2 argument.\n Lire le README.md.")
+        if len(sys.argv) < 3:
+            print("ERROR: generate prend 1 argument.\n Lire le README.md.")
             sys.exit()
 
         assert sys.argv[2] in ["gauche", "droite"]

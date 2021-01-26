@@ -27,7 +27,7 @@ https://developer.twitter.com/en
         
         conda activate politics_debate_env
         
-        conda install tensorflow=1.15 spacy
+        conda install tensorflow=1.15 spacy nltk
         
         pip install demoji tweepy gpt_2_simple flask
         
