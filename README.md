@@ -65,7 +65,7 @@ Réponse:
 
     {
         "gauche": "La réponse de l'IA de gauche",
-        "droite": "La réponse de l'IA de droite
+        "droite": "La réponse de l'IA de droite"
     }
 
 ### Modèles entrainés
