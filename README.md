@@ -23,6 +23,8 @@ https://developer.twitter.com/en
 
 ### Environnement
         
+        conda upgrade conda  
+        
         conda create -n politics_debate_env python=3.7.9
         
         conda activate politics_debate_env
@@ -31,7 +33,7 @@ https://developer.twitter.com/en
         
         pip install demoji tweepy gpt_2_simple flask
         
-        python -m spacy download fr_news_core_lg
+        python -m spacy download fr_core_news_lg
 
 
 ### utilisation
@@ -53,6 +55,21 @@ Lancer l'api de débat:
         
         python main.py debate
 
+### Utilisation API
+
+Url de requête:
+
+        http://127.0.0.1:5000/debate/ma question politique ?
+        
+Réponse:
+
+    {
+        "gauche": "La réponse de l'IA de gauche",
+        "droite": "La réponse de l'IA de droite
+    }
+
 ### Modèles entrainés
 
-https://drive.google.com/drive/folders/1OoufqWVBulq5zG-KblGSAzE5dyKgip64?usp=sharing	
+https://drive.google.com/drive/folders/1OoufqWVBulq5zG-KblGSAzE5dyKgip64?usp=sharing
+
+A placer dans le dossier checkpoint/	
