@@ -36,6 +36,12 @@ https://developer.twitter.com/en
         python -m spacy download fr_core_news_lg
 
 
+Lancer un terminal python
+
+        import nltk
+        
+        nltk.download("stopwords")
+
 ### utilisation
 
 Télécharger les tweets:  
