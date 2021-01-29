@@ -22,6 +22,8 @@ Renseigner ses tokens de l'api tweeter:
 https://developer.twitter.com/en
 
 ### Environnement
+
+Windows est vivement déconseillé
         
         conda upgrade conda  
         
